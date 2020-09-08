@@ -5,9 +5,9 @@ const scale = config.display.width / 250;
 module.exports = `
 .live2d-widget-dialog-container {
   opacity: 0;
-  bottom: ${config.dialog.bottom ? config.dialog.bottom :'90%'};
+  bottom: ${config.dialog.bottom};
   right: 0px;
-  ${config.tool.position=='right' && 'left: 0px'};
+  ${config.tool.position=='right' ? 'left: 0px': ''};
   position: absolute;
   transform-origin: right;
   box-sizing: border-box;
@@ -23,11 +23,15 @@ module.exports = `
   text-overflow: ellipsis;
   font-size: ${16 * scale}px;
   padding: ${5* scale}px ${10* scale}px;
-  border: 1px solid rgba(224, 186, 140, .62);
-  background-color: rgba(236, 217, 188, .5);
+  border: ${config.dialog.border};
+  background: ${config.dialog.background};
   border-radius: 12px;
   box-shadow: 0 3px 15px 2px rgba(191, 158, 118, .2);
   animation: shake 50s ease-in-out 5s infinite;
+}
+[data-theme=dark] .live2d-widget-dialog {
+  border: ${config.dialog.borderDark};
+  background: ${config.dialog.backgroundDark};
 }
 .live2d-widget-dialog span {
   color: #0099cc;

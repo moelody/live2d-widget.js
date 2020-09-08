@@ -39,13 +39,19 @@ const defaultConfig = {
   },
   dialog: {
     enable: false,
-    bottom: '',
+    bottom: '90%',
+    border: '1px solid rgba(224, 186, 140, .62)',
+    borderDark: '1px solid rgba(6, 6, 6, .3)',
+    background: 'rgba(236, 217, 188, .5)',
+    backgroundDark: 'rgba(18,18,18,.7)',
     script: null
   },
   tool: {
     enable: false,
     position: 'left',
-    top: '',
+    top: '10%',
+    color: '#7b8c9d',
+    colorHover: '##0684bd',
     hitokoto: {
       enable: true,
       param: ''

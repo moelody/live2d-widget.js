@@ -17,7 +17,7 @@ toolStyle.innerHTML = `
 	opacity: 0;
 	position: absolute;
 	${config.tool.position}: -20px;
-  top: ${config.tool.top ? config.tool.top : (config.dialog.enable ? '10%' : '20%')};
+  top: ${config.tool.top};
   transition: opacity 1s;
   transform-origin: top;
 }
@@ -25,7 +25,7 @@ toolStyle.innerHTML = `
 	opacity: 1;
 }
 #live2d-widget-tool span {
-	color: #7b8c9d;
+	color: ${config.tool.color};
 	cursor: pointer;
 	display: block;
 	line-height: 30px;
@@ -33,7 +33,7 @@ toolStyle.innerHTML = `
 	transition: color .3s;
 }
 #live2d-widget-tool span:hover {
-	color: #0684bd; /* #34495e */
+	color: ${config.tool.colorHover};
 }
 `;
 document.head.appendChild(toolStyle);
