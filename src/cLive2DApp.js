@@ -216,7 +216,7 @@ function loadTipList(path, callback) {
 
 function loadModelList(path, callback) {
     var request = new XMLHttpRequest();
-    request.open("GET", path || (modelHomeDir + 'model_list.json'), true);
+    request.open("GET", path, true);
     request.responseType = "json";
     request.onload = function(){
         switch(request.status){
