@@ -6,8 +6,7 @@ module.exports = `
 .live2d-widget-dialog-container {
   opacity: 0;
   bottom: ${config.dialog.bottom};
-  right: 0px;
-  ${config.tool.position=='right' ? 'left: 0px': ''};
+  ${config.tool.position}: -${config.dialog.hOffset}px;
   position: absolute;
   transform-origin: right;
   box-sizing: border-box;

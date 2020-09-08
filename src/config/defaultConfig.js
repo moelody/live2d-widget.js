@@ -40,6 +40,7 @@ const defaultConfig = {
   dialog: {
     enable: false,
     bottom: '90%',
+    hOffset: 20,
     border: '1px solid rgba(224, 186, 140, .62)',
     borderDark: '1px solid rgba(6, 6, 6, .3)',
     background: 'rgba(236, 217, 188, .5)',
@@ -50,6 +51,7 @@ const defaultConfig = {
     enable: false,
     position: 'left',
     top: '10%',
+    hOffset: 20,
     color: '#7b8c9d',
     colorHover: '##0684bd',
     hitokoto: {

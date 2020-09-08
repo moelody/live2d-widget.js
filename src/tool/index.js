@@ -16,7 +16,7 @@ toolStyle.innerHTML = `
 	color: #aaa;
 	opacity: 0;
 	position: absolute;
-	${config.tool.position}: -20px;
+	${config.tool.position}: -${config.tool.hOffset}px;
   top: ${config.tool.top};
   transition: opacity 1s;
   transform-origin: top;
