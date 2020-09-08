@@ -92,7 +92,7 @@ function theRealInit (){
   modelHomeDir = getHomeDir(config.model.listPath);
   loadTipList(config.model.tipPath, function(){
     registerTipsEventListener(tipList);
-    loadModel(localStorage.getItem("modelId"));
+    loadModel(Number(localStorage.getItem("modelId")));
   });
   startDraw();
 
@@ -186,28 +186,57 @@ function draw()
 }
 
 function getHomeDir(path) {
-    path = config.model.tipList || path;
+    path = config.model.tipPath || path;
     return path.substring(0, path.lastIndexOf("/") + 1);
 }
 
 function loadTipList(path, callback) {
-    fetch(path || (modelHomeDir + 'model_tips.json'))
-      .then(response => response.json())
-      .then(result => {
-        tipList = result;
+    var request = new XMLHttpRequest();
+    request.open("GET", path || (modelHomeDir + 'model_tips.json'), true);
+    request.responseType = "json";
+    request.onload = function(){
+        switch(request.status){
+            case 200:
+                tipList = request.response
+                break;
+            default:
+                break;
+        }
         callback();
-      })
-      .catch(err => callback());
+    }
+    request.send(null);
+    // fetch(path || (modelHomeDir + 'model_tips.json'))
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     tipList = result;
+    //     callback();
+    //   })
+    //   .catch(err => callback());
 }
 
 function loadModelList(path, callback) {
-    fetch(path)
-      .then(response => response.json())
-      .then(result => {
-        modelList = result;
-        callback(modelList.models);
-      })
-      .catch(err => callback());
+    var request = new XMLHttpRequest();
+    request.open("GET", path || (modelHomeDir + 'model_list.json'), true);
+    request.responseType = "json";
+    request.onload = function(){
+        switch(request.status){
+            case 200:
+                modelList = request.response
+                callback(modelList.models);
+                break;
+            default:
+                callback()
+                break;
+        }
+    }
+    request.send(null);
+    // fetch(path || (modelHomeDir + 'model_list.json'))
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     modelList = result;
+    //     callback(modelList.models);
+    //   })
+    //   .catch(err => callback());
 }
 
 function loadModel(id)

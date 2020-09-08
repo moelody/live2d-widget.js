@@ -8,7 +8,7 @@ function loadOtherModel(id, msg) {
   loadModel(id || 1);
   msg = tipList && tipList.waifu && tipList.waifu.load_model_message;
 
-  showMessage(modelList.messages[(id || 0) % modelList.models.length] || msg || "请多指教，ご主人様！", 4000, 9);
+  showMessage(modelList && modelList.messages[(id || 0) % modelList.models.length] || msg || "请多指教，ご主人様！", 4000, 9);
 
 }
 
