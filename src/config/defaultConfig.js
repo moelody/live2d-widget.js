@@ -38,12 +38,12 @@ const defaultConfig = {
     border: false
   },
   dialog: {
-    enable: true,
+    enable: false,
     bottom: '',
     script: null
   },
   tool: {
-    enable: true,
+    enable: false,
     position: 'left',
     top: '',
     hitokoto: {
