@@ -49,7 +49,7 @@ export function showMessage(text, timeout, priority) {
     closeTimer = null;
   }
   text = randomSelection(text);
-  sessionStorage.setItem("waifu-text", priority || 3);
+  sessionStorage.setItem("waifu-text", priority || 9);
   dialogElement.innerHTML = text;
   displayDialog();
   closeTimer = setTimeout(function () {
