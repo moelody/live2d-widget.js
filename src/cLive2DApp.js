@@ -191,52 +191,23 @@ function getHomeDir(path) {
 }
 
 function loadTipList(path, callback) {
-    var request = new XMLHttpRequest();
-    request.open("GET", path || (modelHomeDir + 'model_tips.json'), true);
-    request.responseType = "json";
-    request.onload = function(){
-        switch(request.status){
-            case 200:
-                tipList = request.response
-                break;
-            default:
-                break;
-        }
+    fetch(path || (modelHomeDir + 'model_tips.json'))
+      .then(response => response.json())
+      .then(result => {
+        tipList = result;
         callback();
-    }
-    request.send(null);
-    // fetch(path || (modelHomeDir + 'model_tips.json'))
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     tipList = result;
-    //     callback();
-    //   })
-    //   .catch(err => callback());
+      })
+      .catch(err => callback());
 }
 
 function loadModelList(path, callback) {
-    var request = new XMLHttpRequest();
-    request.open("GET", path, true);
-    request.responseType = "json";
-    request.onload = function(){
-        switch(request.status){
-            case 200:
-                modelList = request.response
-                callback(modelList.models);
-                break;
-            default:
-                callback()
-                break;
-        }
-    }
-    request.send(null);
-    // fetch(path || (modelHomeDir + 'model_list.json'))
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     modelList = result;
-    //     callback(modelList.models);
-    //   })
-    //   .catch(err => callback());
+    fetch(path)
+      .then(response => response.json())
+      .then(result => {
+        modelList = result;
+        callback(modelList.models);
+      })
+      .catch(err => callback());
 }
 
 function loadModel(id)
