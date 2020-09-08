@@ -82,11 +82,12 @@ cManager.prototype.tapEvent = function (x, y) {
 
     if (this.models[i].hitTest(cDefine.HIT_AREA_HEAD, x, y)) {
       this.eventemitter.emit('tapface');
-      
+
       if (cDefine.DEBUG_LOG)
         console.log("Tap face.");
 
-      this.models[i].setRandomExpression();
+      // this.models[i].setRandomExpression();
+      this.models[i].startRandomMotion(cDefine.MOTION_GROUP_FLICK_HEAD, cDefine.PRIORITY_NORMAL);
     }
     else if (this.models[i].hitTest(cDefine.HIT_AREA_BODY, x, y)) {
       this.eventemitter.emit('tapbody');

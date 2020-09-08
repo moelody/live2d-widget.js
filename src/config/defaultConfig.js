@@ -9,16 +9,18 @@
 
 const defaultConfig = {
   model: {
-    jsonPath: 'https://unpkg.com/live2d-widget-model-shizuku@latest/assets/shizuku.model.json',
+    listPath: '',
+    tipPath: '',
+    jsonPath: 'https://unpkg.com/live2d-widget-model-hijiki@latest/assets/hijiki.model.json',
     scale: 1,
   },
   display: {
     superSample: 2,
-    width: 200,
-    height: 400,
+    width: 250,
+    height: 250,
     position: 'right',
-    hOffset: 0,
-    vOffset: -20,
+    hOffset: 100,
+    vOffset: 20,
   },
   mobile: {
     show: true,
@@ -36,8 +38,22 @@ const defaultConfig = {
     border: false
   },
   dialog: {
-    enable: false,
+    enable: true,
+    bottom: '',
     script: null
+  },
+  tool: {
+    enable: true,
+    position: 'left',
+    top: '',
+    hitokoto: {
+      enable: true,
+      param: ''
+    },
+    plane: true,
+    camera: true,
+    model: true,
+    texture: true
   }
 }
 

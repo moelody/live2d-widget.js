@@ -1,3 +1,11 @@
+# live2d-widget改良
+原仓库Issues中@Nick-Hopps 的改良
+- 刷新页面idle随机加载动作
+- **hit_area**修复
+自己修改的部分
+- 新样式的面板dialog
+- 侧栏增加各种小工具
+
 [![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![devdeps][devdeps]][devdeps-url]
@@ -14,7 +22,7 @@
 [![license][license]][license-url]
 
 [![Backers on Open Collective](https://opencollective.com/live2d-widgetjs/backers/badge.svg)](#backers)
- [![Sponsors on Open Collective](https://opencollective.com/live2d-widgetjs/sponsors/badge.svg)](#sponsors) 
+ [![Sponsors on Open Collective](https://opencollective.com/live2d-widgetjs/sponsors/badge.svg)](#sponsors)
 
 # live2d-widget.js
 
@@ -25,7 +33,6 @@ Demo: [Still working, but you can have a look~](https://l2dwidget.js.org/dev.htm
 Docs(including APIs): [Click me!](https://l2dwidget.js.org)
 
 Online generator: [TBD.](javascript:void(0);)
-
 
 ## Useage
 
@@ -70,34 +77,33 @@ TBD.
 
 https://www.cnblogs.com/pcyy/p/5655542.html
 
-
 ## Settings
 
 See the [document](https://xiazeyu.github.io/live2d-widget.js/docs/class/src/index.js~L2Dwidget.html#instance-method-init).
 
 <details><summary>Current supported models:</summary><br>
 
-  - `chitose`
-  - `Epsilon2.1`
-  - `Gantzert_Felixander`
-  - `haru01`
-  - `haru02`
-  - `haruto`
-  - `hibiki`
-  - `hijiki`
-  - `izumi`
-  - `koharu`
-  - `miku`
-  - `nico`
-  - `ni-j`
-  - `nipsilon`
-  - `nito`
-  - `shizuku`
-  - `tororo`
-  - `tsumiki`
-  - `Unitychan`
-  - `wanko`
-  - `z16`
+- `chitose`
+- `Epsilon2.1`
+- `Gantzert_Felixander`
+- `haru01`
+- `haru02`
+- `haruto`
+- `hibiki`
+- `hijiki`
+- `izumi`
+- `koharu`
+- `miku`
+- `nico`
+- `ni-j`
+- `nipsilon`
+- `nito`
+- `shizuku`
+- `tororo`
+- `tsumiki`
+- `Unitychan`
+- `wanko`
+- `z16`
 
 </details>
 
@@ -137,7 +143,6 @@ Github: [https://github.com/EYHN/hexo-helper-live2d](https://github.com/EYHN/hex
 
 issues: [https://github.com/EYHN/hexo-helper-live2d/issues](https://github.com/EYHN/hexo-helper-live2d/issues)
 
-
 ## Contribute
 
 **Please pay enough attention to this document if you want to commit your changes or submit issues.**
@@ -156,8 +161,6 @@ issues: [https://github.com/EYHN/hexo-helper-live2d/issues](https://github.com/E
 
 - [CubismJsComponents](https://github.com/Live2D/CubismJsComponents)
 
-
-
 ## About me
 
 [![Author][author]][author-url]
@@ -166,13 +169,11 @@ issues: [https://github.com/EYHN/hexo-helper-live2d/issues](https://github.com/E
 
 [![Author Email][author-email]][author-email-url]
 
-
 [![Collaborator 0][collaborator0]][collaborator0-url]
 
 [![Collaborator 0 QQ][collaborator0-qq]][collaborator0-qq-url]
 
 [![Collaborator 0 Email][collaborator0-email]][collaborator0-email-url]
-
 
 ## Imported
 
@@ -180,7 +181,7 @@ issues: [https://github.com/EYHN/hexo-helper-live2d/issues](https://github.com/E
 
 ## Special Thanks
 
-- @mashirozx 
+- @mashirozx
 - @fghrsh
 - @journey-ad
 - @gwzz
@@ -245,16 +246,14 @@ Open sourced under the GPL v2.0 license.
 
 ## Contributors
 
-This project exists thanks to all the people who contribute. 
+This project exists thanks to all the people who contribute.
 <a href="https://github.com/xiazeyu/live2d-widget.js/graphs/contributors"><img src="https://opencollective.com/live2d-widgetjs/contributors.svg?width=890&button=false" /></a>
-
 
 ## Backers
 
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/live2d-widgetjs#backer)]
 
 <a href="https://opencollective.com/live2d-widgetjs#backers" target="_blank"><img src="https://opencollective.com/live2d-widgetjs/backers.svg?width=890"></a>
-
 
 ## Sponsors
 
@@ -270,5 +269,3 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 <a href="https://opencollective.com/live2d-widgetjs/sponsor/7/website" target="_blank"><img src="https://opencollective.com/live2d-widgetjs/sponsor/7/avatar.svg"></a>
 <a href="https://opencollective.com/live2d-widgetjs/sponsor/8/website" target="_blank"><img src="https://opencollective.com/live2d-widgetjs/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/live2d-widgetjs/sponsor/9/website" target="_blank"><img src="https://opencollective.com/live2d-widgetjs/sponsor/9/avatar.svg"></a>
-
-

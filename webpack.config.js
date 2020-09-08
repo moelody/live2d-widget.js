@@ -69,6 +69,9 @@ module.exports = env => {return{
 
   resolve: {
     extensions: ['.js','.html', '.webpack.js', '.web.js'],
+    alias: {
+      root: path.resolve(__dirname, "src")
+    }
   },
 
   module: {

@@ -32,6 +32,8 @@ class L2Dwidget extends EventEmitter {
 /**
  * The init function
  * @param {Object}   [userConfig] User's custom config 用户自定义设置
+ * @param {String}   [userConfig.model.listPath = ''] Path to Live2D models's list json eg.
+ * @param {String}   [userConfig.model.tipPath = ''] Path to Live2D models's tip json eg.
  * @param {String}   [userConfig.model.jsonPath = ''] Path to Live2D model's main json eg. `https://test.com/miku.model.json` model主文件路径
  * @param {Number}   [userConfig.model.scale = 1] Scale between the model and the canvas 模型与canvas的缩放
  * @param {Number}   [userConfig.display.superSample = 2] rate for super sampling rate 超采样等级
@@ -46,8 +48,17 @@ class L2Dwidget extends EventEmitter {
  * @param {String}   [userConfig.name.div = 'live2d-widget'] ID name of the div div元素的ID
  * @param {Number}   [userConfig.react.opacity = 0.7] opacity 透明度
  * @param {Boolean}  [userConfig.dev.border = false] Whether to show border around the canvas 在canvas周围显示边界
- * @param {Boolean}  [userConfig.dialog.enable = false] Display dialog 显示人物对话框
- * @param {Boolean}  [userConfig.dialog.hitokoto = false] Enable hitokoto 使用一言API
+ * @param {Boolean}  [userConfig.dialog.enable = true] Display dialog 显示人物对话框
+ * @param {String}  [userConfig.dialog.bottom = ''] dialog bottom position 对话框底距自定义
+ * @param {Object}  [userConfig.dialog.script] Script event 使用脚本绑定事件
+ * @param {Boolean}  [userConfig.tool.enable = true] Display tool 显示侧边工具栏
+ * @param {String}  [userConfig.tool.position = 'left'] position 侧边工具栏位置
+ * @param {String}  [userConfig.tool.top = ''] tool top 侧边工具栏顶距自定义
+ * @param {Object}  [userConfig.tool.hitokoto] Enable hitokoto 显示一言API小工具
+ * @param {Boolean}  [userConfig.tool.plane] Enable plane 显示游戏飞机大战小工具
+ * @param {Boolean}  [userConfig.tool.camera] Enable camera 显示照相机小工具
+ * @param {Boolean}  [userConfig.tool.model] Enable model 显示切换模块小工具
+ * @param {Boolean}  [userConfig.tool.texture] Enable texture 显示切换皮肤小工具
  * @return {null}
  */
 

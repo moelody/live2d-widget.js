@@ -26,6 +26,7 @@ import { MatrixStack } from "./utils/MatrixStack";
 import { cDefine } from "./cDefine";
 import device from 'current-device';
 import { L2Dwidget } from './index';
+import { registerTipsEventListener } from './dialog2';
 
 let live2DMgr = null;
 let captureFrameCB = undefined;
@@ -40,6 +41,12 @@ let lastMouseY = 0;
 let headPos = 0.5;
 let opacityDefault = 0.7;
 let opacityHover = 1;
+let modelHomeDir = '';
+let jsonPath = '';
+let modelList = null;
+let tipList = null;
+let modelId = 0;
+let texturesId = 0;
 
 /**
  * Main function of live2d-widget
@@ -81,7 +88,12 @@ function theRealInit (){
 
   Live2D.setGL(currWebGL);
   currWebGL.clearColor(0.0, 0.0, 0.0, 0.0);
-  changeModel(config.model.jsonPath);
+  // changeModel(config.model.jsonPath);
+  modelHomeDir = getHomeDir(config.model.listPath);
+  loadTipList(config.model.tipPath, function(){
+    registerTipsEventListener(tipList);
+    loadModel(localStorage.getItem("modelId"));
+  });
   startDraw();
 
   return live2DMgr;
@@ -173,11 +185,58 @@ function draw()
     MatrixStack.pop();
 }
 
+function getHomeDir(path) {
+    path = config.model.tipList || path;
+    return path.substring(0, path.lastIndexOf("/") + 1);
+}
+
+function loadTipList(path, callback) {
+    fetch(path || (modelHomeDir + 'model_tips.json'))
+      .then(response => response.json())
+      .then(result => {
+        tipList = result;
+        callback();
+      })
+      .catch(err => callback());
+}
+
+function loadModelList(path, callback) {
+    fetch(path)
+      .then(response => response.json())
+      .then(result => {
+        modelList = result;
+        callback(modelList.models);
+      })
+      .catch(err => callback());
+}
+
+function loadModel(id)
+{
+    loadModelList(config.model.listPath, function(models){
+        if (models) {
+            modelId = (id || 0) % models.length;
+            localStorage.setItem("modelId", modelId);
+            jsonPath = modelHomeDir + models[modelId] + "/index.json";
+        } else {
+            jsonPath = config.model.jsonPath;
+        }
+        changeModel(jsonPath);
+    });
+}
+
 function changeModel(modelurl) // 更换模型
 {
     live2DMgr.reloadFlg = true;
     live2DMgr.count++; // 现在仍有多模型支持，稍后可以精简
     live2DMgr.changeModel(currWebGL, modelurl);
+}
+
+function updateModel(id) // 刷新模型
+{
+    texturesId = id % live2DMgr.getModel(0).modelSetting.texturesNum;
+    localStorage.setItem("texturesId", texturesId);
+
+    loadModel(localStorage.getItem("modelId"));
 }
 
 function modelScaling(scale) {
@@ -429,6 +488,10 @@ function transformScreenY(deviceY)
 }
 
 export{
+  tipList,
+  modelList,
   theRealInit,
   captureFrame,
+  loadModel,
+  updateModel
 }

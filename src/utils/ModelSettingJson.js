@@ -5,6 +5,7 @@
 */
 
 import { Live2DFramework } from "../lib/Live2DFramework"
+import { isType, randomSelection } from "./polyfill"
 
 /**
 * @name ModelSettingJson
@@ -32,6 +33,9 @@ export function ModelSettingJson()
     this.VALUE = "val";
     this.FILE = "file";
     this.json = {};
+    this.textures = [];
+    this.texturesId = 0;
+    this.texturesNum = 1;
 }
 
 /**
@@ -53,21 +57,6 @@ ModelSettingJson.prototype.loadModelSetting = function(path, callback)
 };
 
 /**
-* @name getTextureFile
-* @desc get texture file from json
-* @param {int} order number of texture
-* @returns {string} file path
-* @memberOf ModelSettingJson
-*/
-ModelSettingJson.prototype.getTextureFile = function(n)
-{
-    if (this.json[this.TEXTURES] == null || this.json[this.TEXTURES][n] == null)
-        return null;
-
-    return this.json[this.TEXTURES][n];
-}
-
-/**
 * @name getModelFile
 * @desc get model file from json
 * @param null
@@ -76,8 +65,23 @@ ModelSettingJson.prototype.getTextureFile = function(n)
 */
 ModelSettingJson.prototype.getModelFile = function()
 {
-    return this.json[this.MODEL];
+    return randomSelection(this.json[this.MODEL]);
 };
+
+/**
+* @name getTextureFile
+* @desc get texture file from json
+* @param {int} order number of texture
+* @returns {string} file path
+* @memberOf ModelSettingJson
+*/
+ModelSettingJson.prototype.getTextureFile = function(n)
+{
+    if (this.textures == null || this.textures[n] == null)
+        return null;
+
+    return this.textures[n];
+}
 
 /**
 * @name getTextureNum
@@ -88,9 +92,19 @@ ModelSettingJson.prototype.getModelFile = function()
 */
 ModelSettingJson.prototype.getTextureNum = function()
 {
-    if (this.json[this.TEXTURES] == null) return 0;
+    this.textures = this.json[this.TEXTURES];
+    if (this.textures == null) return 0;
 
-    return this.json[this.TEXTURES].length;
+    this.texturesId = localStorage.getItem("texturesId") || 0;
+    if (isType(this.textures[this.texturesId], 'Array')) {
+        this.texturesNum = this.textures.length;
+        return (this.textures = this.textures[this.texturesId]).length;
+    } else if (isType(this.textures[0], 'Array')) {
+        this.texturesNum = this.textures.length;
+        return (this.textures = this.textures[0]).length;
+    } else {
+        return this.textures.length;
+    }
 }
 
 /**

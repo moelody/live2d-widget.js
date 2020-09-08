@@ -5,7 +5,8 @@
 
 import { config } from './config/configMgr';
 import { L2Dwidget } from './index';
-import { createDialogElement } from './dialog';
+import { createDialogElement } from './dialog2';
+import { createToolElement } from './tool';
 
 /**
  * The current WebGL element
@@ -33,18 +34,39 @@ function createElement() {
   if (e !== null) {
     document.body.removeChild(e);
   }
+  const Style = document.createElement('style');
+  Style.innerHTML = `
+    #live2d-widget {
+      position: fixed;
+      ${config.display.position}: ${config.display.hOffset}px;
+      bottom: ${config.display.vOffset}px;
+      width: ${config.display.width}px;
+      height: ${config.display.height}px;
+      z-index: 99999;
+      opacity: ${config.react.opacity};
+      transform: translateY(3px);
+      transition: transform .3s ease-in-out, bottom 3s ease-in-out;
+    }
+    #live2d-widget:hover {
+      transform: translateY(0);
+    }
+  `;
+  document.head.appendChild(Style);
 
   let newElem = document.createElement('div');
   newElem.id = config.name.div;
-  newElem.className = 'live2d-widget-container';
-  newElem.style.setProperty('position', 'fixed');
-  newElem.style.setProperty(config.display.position, config.display.hOffset + 'px');
-  newElem.style.setProperty('bottom', config.display.vOffset + 'px');
-  newElem.style.setProperty('width', config.display.width + 'px');
-  newElem.style.setProperty('height', config.display.height + 'px');
-  newElem.style.setProperty('z-index', 99999);
-  newElem.style.setProperty('opacity', config.react.opacity);
-  newElem.style.setProperty('pointer-events', 'none');
+  // newElem.className = 'live2d-widget-container';
+  // newElem.style.setProperty('position', 'fixed');
+  // newElem.style.setProperty(config.display.position, config.display.hOffset + 'px');
+  // newElem.style.setProperty('bottom', config.display.vOffset + 'px');
+  // newElem.style.setProperty('width', config.display.width + 'px');
+  // newElem.style.setProperty('height', config.display.height + 'px');
+  // newElem.style.setProperty('z-index', 99999);
+  // newElem.style.setProperty('opacity', config.react.opacity);
+  // newElem.style.setProperty('transform', 'translateY(3px)');
+  // newElem.style.setProperty('transition', 'transform .3s ease-in-out, bottom 3s ease-in-out');
+  // newElem.onmouseover= function(e){this.style.setProperty('transform', 'translateY(0)')};
+  // newElem.onmouseout= function(e){this.style.setProperty('transform', 'translateY(3px)')};
   document.body.appendChild(newElem);
   L2Dwidget.emit('create-container', newElem);
 
@@ -66,6 +88,10 @@ function createElement() {
 
   currCanvas = document.getElementById(config.name.canvas);
   L2Dwidget.emit('create-canvas', newCanvasElem);
+
+  if (config.tool.enable) {
+    createToolElement(newElem);
+  }
 
   initWebGL();
 
