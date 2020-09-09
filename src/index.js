@@ -32,6 +32,7 @@ class L2Dwidget extends EventEmitter {
 /**
  * The init function
  * @param {Object}   [userConfig] User's custom config 用户自定义设置
+ * @param {String}   [userConfig.model.homePath = ''] Path to Live2D models's homedir json eg.
  * @param {String}   [userConfig.model.listPath = ''] Path to Live2D models's list json eg.
  * @param {String}   [userConfig.model.tipPath = ''] Path to Live2D models's tip json eg.
  * @param {String}   [userConfig.model.jsonPath = ''] Path to Live2D model's main json eg. `https://test.com/miku.model.json` model主文件路径

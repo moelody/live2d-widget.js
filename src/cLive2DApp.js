@@ -89,7 +89,7 @@ function theRealInit (){
   Live2D.setGL(currWebGL);
   currWebGL.clearColor(0.0, 0.0, 0.0, 0.0);
   // changeModel(config.model.jsonPath);
-  modelHomeDir = getHomeDir(config.model.listPath);
+  modelHomeDir = getHomeDir();
   loadTipList(config.model.tipPath, function(){
     registerTipsEventListener(tipList);
     loadModel(Number(localStorage.getItem("modelId")));
@@ -186,8 +186,8 @@ function draw()
 }
 
 function getHomeDir(path) {
-    path = config.model.tipPath || path;
-    return path.substring(0, path.lastIndexOf("/") + 1);
+    path = config.model.listPath || config.model.tipPath;
+    return config.model.homePath || config.model.jsonPath.replace(/(?<=@.+\/).+/g,'') || path.substring(0, path.lastIndexOf("/") + 1);
 }
 
 function loadTipList(path, callback) {

@@ -9,6 +9,7 @@
 
 const defaultConfig = {
   model: {
+    homePath: '',
     listPath: '',
     tipPath: '',
     jsonPath: 'https://unpkg.com/live2d-widget-model-hijiki@latest/assets/hijiki.model.json',
