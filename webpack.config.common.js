@@ -47,7 +47,7 @@ module.exports = env => {return{
       maxChunks: 1,
     }),
     // Banner must be put below UglifyJsPlugin, or it won't work.
-    new webpack.BannerPlugin(`${isProd(env) ? '' : '___DEV___'}https://github.com/xiazeyu/live2d-widget.js built@${nowDate.toLocaleDateString()} ${nowDate.toLocaleTimeString()}`),
+    new webpack.BannerPlugin(`${isProd(env) ? '' : '___DEV___'}https://github.com/moelody/live2d-widget.js built@${nowDate.toLocaleDateString()} ${nowDate.toLocaleTimeString()}`),
   ],
 
   resolve: {
